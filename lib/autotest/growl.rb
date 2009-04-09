@@ -4,9 +4,7 @@ module Autotest::Growl
   def self.growl title, msg, pri = 0, img = nil
     title += " in #{Dir.pwd.split(/\//).last(3).join("/")}"
     msg += " at #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
-    # TODO: parameterize default image
-    img ||= "/Applications/Mail.app/Contents/Resources/Caution.tiff"
-    cmd = "growlnotify -n autotest --image #{img} -p #{pri} -m #{msg.inspect} #{title}"
+    cmd = "growlnotify -n autotest -p #{pri} -m #{msg.inspect} #{title}"
     system cmd
     nil
   end
